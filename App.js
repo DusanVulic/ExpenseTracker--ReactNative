@@ -18,6 +18,8 @@ import { GlobalStyles } from "./constants/styles";
 //import Icons
 
 import { Ionicons } from "@expo/vector-icons";
+//import button componnent
+import IconButton from "./components/UI/IconButton";
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -30,6 +32,9 @@ const ExpensesOverview = () => {
         headerTintColor: "white",
         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         tabBarActiveTintColor: "white",
+        headerRight: ({ tintColor }) => (
+          <IconButton icon="add" size={30} color={tintColor} />
+        ),
       }}
     >
       <BottomTabs.Screen
