@@ -11,31 +11,31 @@ const DUMMY_EXPENSES = [
     id: "e1",
     description: "Pair of shoes",
     amount: 59.99,
-    date: new Date("2022-6-17"),
+    date: new Date("2022-06-15"),
   },
   {
     id: "e2",
     description: "Gym pass",
     amount: 29.99,
-    date: new Date("2022-5-18"),
+    date: new Date("2022-05-18"),
   },
   {
     id: "e3",
     description: "Supplements",
     amount: 79.99,
-    date: new Date("2022-6-15"),
+    date: new Date("2022-06-15"),
   },
   {
     id: "e4",
     description: "Bugsy's food",
     amount: 40.99,
-    date: new Date("2022-6-15"),
+    date: new Date("2022-06-15"),
   },
   {
     id: "e5",
     description: "My food",
     amount: 20.19,
-    date: new Date("2022-6-10"),
+    date: new Date("2022-06-10"),
   },
 ];
 
