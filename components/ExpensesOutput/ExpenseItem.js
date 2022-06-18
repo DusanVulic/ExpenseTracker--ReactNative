@@ -7,10 +7,12 @@ import { getFormatedDate } from "./../../util/date";
 //use navigation hook
 import { useNavigation } from "@react-navigation/native";
 
-const ExpenseItem = ({ description, amount, date }) => {
+const ExpenseItem = ({ description, amount, date, id }) => {
   const navigation = useNavigation();
   const expensePressHandler = () => {
-    navigation.navigate("ManageExpense");
+    navigation.navigate("ManageExpense", {
+      expenseId: id,
+    });
   };
 
   return (
