@@ -4,7 +4,6 @@ import { View, StyleSheet } from "react-native";
 //import of an expense form
 import ExpenseForm from "../components/Manage-Expense/ExpenseForm";
 
-import Button from "../components/UI/Button";
 //icon
 import IconButton from "./../components/UI/IconButton";
 //colors
@@ -12,6 +11,8 @@ import { GlobalStyles } from "./../constants/styles";
 
 //import context
 import { ExpensesContext } from "./../store/expenses-context";
+//import axios helper function
+import { storeExpense } from "./../util/http";
 
 const ManageExpense = ({ route, navigation }) => {
   const expenseCtx = useContext(ExpensesContext);
@@ -43,6 +44,7 @@ const ManageExpense = ({ route, navigation }) => {
     if (isEditing) {
       expenseCtx.updateExpense(editedExpenseId, expenseData);
     } else {
+      storeExpense(expenseData);
       expenseCtx.addExpense(expenseData);
     }
     navigation.goBack();
