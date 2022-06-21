@@ -12,7 +12,7 @@ import { GlobalStyles } from "./../constants/styles";
 //import context
 import { ExpensesContext } from "./../store/expenses-context";
 //import axios helper function
-import { storeExpense } from "./../util/http";
+import { storeExpense, updateExpense, deleteExpense } from "./../util/http";
 
 const ManageExpense = ({ route, navigation }) => {
   const expenseCtx = useContext(ExpensesContext);
@@ -31,9 +31,10 @@ const ManageExpense = ({ route, navigation }) => {
     });
   }, [navigation, isEditing]);
 
-  const deleteExpenseHandler = () => {
-    navigation.goBack();
+  const deleteExpenseHandler = async () => {
+    await deleteExpense(editedExpenseId);
     expenseCtx.deleteExpense(editedExpenseId);
+    navigation.goBack();
   };
 
   const cancelHandler = () => {
@@ -43,6 +44,7 @@ const ManageExpense = ({ route, navigation }) => {
   const confirmHandler = async (expenseData) => {
     if (isEditing) {
       expenseCtx.updateExpense(editedExpenseId, expenseData);
+      await updateExpense(editedExpenseId, expenseData);
     } else {
       const id = await storeExpense(expenseData);
       expenseCtx.addExpense({ ...expenseData, id: id });
